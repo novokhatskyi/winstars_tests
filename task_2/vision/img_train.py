@@ -1,16 +1,19 @@
 # task_2/vision/img_train.py
 
-from keras.src.legacy.preprocessing.image import ImageDataGenerator  # ✅ новий імпорт
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from cnn_model_2 import CNNModel
-import tensorflow as tf
-import os
 
-# --- Системні налаштування для macOS ---
-tf.config.set_visible_devices([], 'GPU')  # вимикає GPU, щоб уникнути mutex-помилки
-os.environ["OBJC_DISABLE_INITIALIZE_FORK_SAFETY"] = "YES"
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
-os.environ["TF_METAL_ENABLE"] = "0"       # вимикає Metal backend на Mac
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+import os
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+# os.environ["TF_METAL_ENABLE"] = "0"
+# os.environ["OBJC_DISABLE_INITIALIZE_FORK_SAFETY"] = "YES"
+
+import tensorflow as tf
+
+# Повністю вимикаємо GPU в TensorFlow
+tf.config.set_visible_devices([], 'GPU')
+print("✅ TensorFlow запущено без GPU (лише CPU)")
 
 def train():
     # 1. Підготовка генераторів зображень
