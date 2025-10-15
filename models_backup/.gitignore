@@ -1,0 +1,13 @@
+# Ігноруємо середовище
+venv/
+__pycache__/
+
+# Ігноруємо великі моделі
+artifacts/
+*.h5
+*.safetensors
+
+# Тимчасові файли
+.DS_Store
+*.log
+*.tmp
